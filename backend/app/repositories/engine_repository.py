@@ -23,7 +23,7 @@ class EngineRepository:
         db: Session,
         search: str | None = None,
         manufacturer: str | None = None,
-        status: EngineStatus | None = None
+        status: EngineStatus | None = None,
         page: int = 1,
         limit: int = 20,
     ) -> list[Engine]:
