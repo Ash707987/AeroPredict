@@ -29,17 +29,17 @@ class UserRepository:
             .where(User.email == email)
         )
 
-        return db.scalar(statement) 
-    
+        return db.scalar(statement)
+
     @staticmethod
     def get_by_username(
         db: Session,
         username: str,
     ) -> User | None:
 
-    statement = (
-        select(User)
-        .where(User.username == username)
-    )
+        statement = (
+            select(User)
+            .where(User.username == username)
+        )
 
-    return db.scalar(statement)
+        return db.scalar(statement)
