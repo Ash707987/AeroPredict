@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
-from sqlalchemy import select
+
 from app.models.engine import Engine
+from app.repositories.engine_repository import EngineRepository
 from app.schemas.engine import EngineCreate
 
 
@@ -15,18 +16,37 @@ def create_engine(
         model=engine_data.model,
     )
 
-    db.add(engine)
-    db.commit()
-    db.refresh(engine)
+    return EngineRepository.create(
+        db=db,
+        engine=engine,
+    )
 
-    return engine 
 
 def get_engines(
     db: Session,
+    search: str | None = None,
+    manufacturer: str | None = None,
+    status: EngineStatus | None = None,
+    page: int = 1,
+    limit: int = 20,
 ) -> list[Engine]:
 
-    statement = select(Engine)
+    return EngineRepository.get_all(
+        db=db,
+        search=search,
+        manufacturer=manufacturer,
+        status=status,
+        page=page,
+        limit=limit,
+    )
 
-    engines = db.scalars(statement).all()
 
-    return engines
+def get_engine_by_id(
+    db: Session,
+    engine_id: int,
+) -> Engine | None:
+
+    return EngineRepository.get_by_id(
+        db=db,
+        engine_id=engine_id,
+    )
