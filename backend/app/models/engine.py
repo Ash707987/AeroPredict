@@ -2,7 +2,7 @@ from sqlalchemy import String, Integer
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
-
+from sqlalchemy.orm import relationship
 
 class Engine(Base):
     __tablename__ = "engines"
@@ -33,4 +33,10 @@ class Engine(Base):
     status: Mapped[str] = mapped_column(
         String(30),
         default="Healthy",
+    )
+    
+    predictions = relationship(
+    "Prediction",
+    back_populates="engine",
+    cascade="all, delete-orphan",
     )
