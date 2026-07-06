@@ -1,4 +1,7 @@
 # ✈️ AeroPredict
+<img width="1147" height="935" alt="image" src="https://github.com/user-attachments/assets/9beacf5a-30e2-46c1-92b3-d1a4231cc2b8" />
+<img width="1144" height="987" alt="image" src="https://github.com/user-attachments/assets/031af03a-1d01-41a1-a856-8f9d82ba91c5" />
+
 
 > AI-powered predictive maintenance platform for aircraft engines using Machine Learning, FastAPI, PostgreSQL, React, and XGBoost.
 
@@ -303,11 +306,13 @@ npm run dev
 
 ### Landing Page
 
-> *(Insert screenshot here)*
+<img width="1147" height="935" alt="image" src="https://github.com/user-attachments/assets/4db1580a-86b8-498e-a170-87976ecf5cda" />
+
 
 ### Dashboard
 
-> *(Insert screenshot here)*
+<img width="1144" height="987" alt="image" src="https://github.com/user-attachments/assets/b325ba1a-a2c8-40b1-8e63-00d8ce5fad57" />
+
 
 ---
 
