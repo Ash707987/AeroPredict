@@ -22,7 +22,14 @@ export function StatusPieChart({ summary }: { summary: PredictionSummary }) {
                 <Cell key={entry.name} fill={colors[index]} />
               ))}
             </Pie>
-            <Tooltip contentStyle={{ background: "#121826", border: "1px solid #293245", borderRadius: 8 }} />
+            <Tooltip
+              contentStyle={{
+                background: "rgb(var(--color-panel))",
+                border: "1px solid rgb(var(--color-border))",
+                borderRadius: 8,
+                color: "rgb(var(--color-text))"
+              }}
+            />
           </PieChart>
         </ResponsiveContainer>
       </div>

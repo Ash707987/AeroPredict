@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { Card } from "../components/ui/Card";
+import { ThemeToggle } from "../components/ui/ThemeToggle";
 import { useAuth } from "../context/AuthContext";
 import { getApiErrorMessage } from "../lib/apiError";
 import { login } from "../services/authService";
@@ -35,6 +36,9 @@ export function LoginPage() {
 
   return (
     <div className="page-shell flex min-h-screen items-center justify-center">
+      <div className="absolute right-4 top-4">
+        <ThemeToggle />
+      </div>
       <Card className="w-full max-w-md">
         <h1 className="text-2xl font-semibold">Login</h1>
         <p className="mt-2 text-sm text-app-muted">Use your AeroPredict account to continue.</p>
@@ -42,14 +46,14 @@ export function LoginPage() {
           <label className="block text-sm">
             Email
             <input className="input mt-2" type="email" {...register("email")} />
-            <span className="text-xs text-red-300">{formState.errors.email?.message}</span>
+            <span className="text-xs text-red-500">{formState.errors.email?.message}</span>
           </label>
           <label className="block text-sm">
             Password
             <input className="input mt-2" type="password" {...register("password")} />
-            <span className="text-xs text-red-300">{formState.errors.password?.message}</span>
+            <span className="text-xs text-red-500">{formState.errors.password?.message}</span>
           </label>
-          {error ? <p className="text-sm text-red-300">{error}</p> : null}
+          {error ? <p className="text-sm text-red-500">{error}</p> : null}
           <button className="btn-primary w-full" disabled={formState.isSubmitting}>
             <LogIn className="h-4 w-4" />
             {formState.isSubmitting ? "Logging in..." : "Login"}
@@ -57,7 +61,7 @@ export function LoginPage() {
         </form>
         <p className="mt-5 text-sm text-app-muted">
           New here?{" "}
-          <Link className="text-blue-300" to="/register">
+          <Link className="text-app-blue" to="/register">
             Create an account
           </Link>
         </p>

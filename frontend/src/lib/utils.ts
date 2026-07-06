@@ -44,7 +44,7 @@ export function normalizePredictionResponse(data: BackendUploadResponse): Predic
 }
 
 export function statusClasses(status: EngineStatus) {
-  if (status === "Healthy") return "bg-emerald-500/15 text-emerald-300";
-  if (status === "Warning") return "bg-yellow-500/15 text-yellow-300";
-  return "bg-red-500/15 text-red-300";
+  if (status === "Healthy") return "bg-emerald-500/15 text-emerald-500";
+  if (status === "Warning") return "bg-yellow-500/15 text-yellow-600";
+  return "bg-red-500/15 text-red-500";
 }

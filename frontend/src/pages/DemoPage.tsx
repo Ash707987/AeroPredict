@@ -19,7 +19,7 @@ export function DemoPage() {
   if (isLoading) return <div className="page-shell text-app-muted">Loading demo data...</div>;
 
   if (isError || !data) {
-    return <div className="page-shell text-red-300">Could not load demo data.</div>;
+    return <div className="page-shell text-red-500">Could not load demo data.</div>;
   }
 
   return (

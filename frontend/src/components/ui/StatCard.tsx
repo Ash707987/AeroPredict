@@ -10,10 +10,10 @@ interface StatCardProps {
 }
 
 const toneMap = {
-  blue: "bg-blue-500/15 text-blue-300",
-  green: "bg-emerald-500/15 text-emerald-300",
-  yellow: "bg-yellow-500/15 text-yellow-300",
-  red: "bg-red-500/15 text-red-300"
+  blue: "bg-blue-500/15 text-blue-500",
+  green: "bg-emerald-500/15 text-emerald-500",
+  yellow: "bg-yellow-500/15 text-yellow-600",
+  red: "bg-red-500/15 text-red-500"
 };
 
 export function StatCard({ title, value, note, icon: Icon, tone = "blue" }: StatCardProps) {

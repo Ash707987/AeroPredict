@@ -14,11 +14,18 @@ export function RulBarChart({ summary }: { summary: PredictionSummary }) {
       <div className="h-72">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#293245" />
-            <XAxis dataKey="engine" stroke="#96a3b7" />
-            <YAxis stroke="#96a3b7" />
-            <Tooltip contentStyle={{ background: "#121826", border: "1px solid #293245", borderRadius: 8 }} />
-            <Bar dataKey="rul" fill="#4c8bf5" radius={[5, 5, 0, 0]} />
+            <CartesianGrid strokeDasharray="3 3" stroke="rgb(var(--color-border))" />
+            <XAxis dataKey="engine" stroke="rgb(var(--color-muted))" />
+            <YAxis stroke="rgb(var(--color-muted))" />
+            <Tooltip
+              contentStyle={{
+                background: "rgb(var(--color-panel))",
+                border: "1px solid rgb(var(--color-border))",
+                borderRadius: 8,
+                color: "rgb(var(--color-text))"
+              }}
+            />
+            <Bar dataKey="rul" fill="rgb(var(--color-blue))" radius={[5, 5, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>

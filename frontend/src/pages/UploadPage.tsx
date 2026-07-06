@@ -47,14 +47,14 @@ export function UploadPage() {
             handleFile(event.dataTransfer.files[0]);
           }}
         >
-          <UploadCloud className="h-12 w-12 text-blue-300" />
+          <UploadCloud className="h-12 w-12 text-app-blue" />
           <span className="mt-4 text-lg font-medium">Drop your CSV here</span>
           <span className="mt-2 text-sm text-app-muted">or click to browse from your computer</span>
           <input className="sr-only" type="file" accept=".csv,.txt" onChange={(event) => handleFile(event.target.files?.[0])} />
         </label>
 
         {file ? <p className="mt-4 text-sm text-app-muted">Selected file: <span className="text-app-text">{file.name}</span></p> : null}
-        {error ? <p className="mt-4 text-sm text-red-300">{error}</p> : null}
+        {error ? <p className="mt-4 text-sm text-red-500">{error}</p> : null}
 
         <div className="mt-6 flex items-center gap-3">
           <button className="btn-primary" disabled={!file || mutation.isPending} onClick={() => file && mutation.mutate(file)}>

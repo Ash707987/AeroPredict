@@ -1,6 +1,7 @@
 import { Activity, BarChart3, Home, LogOut, Upload } from "lucide-react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { ThemeToggle } from "../ui/ThemeToggle";
 
 const links = [
   { to: "/dashboard", label: "Dashboard", icon: BarChart3 },
@@ -29,7 +30,7 @@ export function AppLayout() {
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `btn ${isActive ? "bg-app-panel2 text-white" : "text-app-muted hover:text-white"}`
+                  `btn ${isActive ? "bg-app-panel2 text-app-text" : "text-app-muted hover:text-app-text"}`
                 }
               >
                 <link.icon className="h-4 w-4" />
@@ -40,6 +41,7 @@ export function AppLayout() {
 
           <div className="flex items-center gap-2">
             <span className="hidden text-sm text-app-muted sm:inline">{user?.username ?? "Guest"}</span>
+            <ThemeToggle />
             {token ? (
               <button
                 className="btn-secondary px-3"

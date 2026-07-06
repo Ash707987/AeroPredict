@@ -2,6 +2,7 @@ import { Activity, BarChart3, Brain, FileUp, LogIn, Upload } from "lucide-react"
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Card } from "../components/ui/Card";
+import { ThemeToggle } from "../components/ui/ThemeToggle";
 
 const features = [
   { title: "AI Prediction", text: "Uses an XGBoost model trained on turbofan data.", icon: Brain },
@@ -20,6 +21,7 @@ export function LandingPage() {
           AeroPredict
         </Link>
         <div className="flex gap-2">
+          <ThemeToggle />
           <Link to="/login" className="btn-secondary">
             <LogIn className="h-4 w-4" />
             Login
@@ -30,8 +32,8 @@ export function LandingPage() {
       <main className="page-shell">
         <section className="grid min-h-[68vh] items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
-            <p className="mb-4 text-sm font-medium text-blue-300">Aircraft maintenance + machine learning</p>
-            <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-5xl">
+            <p className="mb-4 text-sm font-medium text-app-blue">Aircraft maintenance + machine learning</p>
+            <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-app-text sm:text-5xl">
               Aircraft Engine Predictive Maintenance Powered by AI
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-app-muted">
@@ -61,7 +63,7 @@ export function LandingPage() {
                 <p className="text-sm text-app-muted">Demo engine health</p>
                 <h2 className="text-xl font-semibold">RUL Overview</h2>
               </div>
-              <span className="badge bg-blue-500/15 text-blue-300">Live UI</span>
+              <span className="badge bg-blue-500/15 text-blue-500">Live UI</span>
             </div>
             <div className="space-y-4">
               {[
@@ -87,7 +89,7 @@ export function LandingPage() {
         <section className="grid gap-4 pb-12 md:grid-cols-3">
           {features.map((feature) => (
             <Card key={feature.title}>
-              <feature.icon className="mb-4 h-6 w-6 text-blue-300" />
+              <feature.icon className="mb-4 h-6 w-6 text-app-blue" />
               <h3 className="font-semibold">{feature.title}</h3>
               <p className="mt-2 text-sm leading-6 text-app-muted">{feature.text}</p>
             </Card>
