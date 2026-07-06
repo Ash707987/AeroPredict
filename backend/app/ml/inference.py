@@ -1,13 +1,11 @@
-import pandas as pd
-
 from app.ml.loader import model
 from app.ml.preprocessing import preprocess
 
 
-def predict(df: pd.DataFrame):
+def predict(df):
 
-    processed = preprocess(df)
+    engine_ids, features = preprocess(df)
 
-    predictions = model.predict(processed)
+    predictions = model.predict(features)
 
-    return predictions
+    return engine_ids, predictions

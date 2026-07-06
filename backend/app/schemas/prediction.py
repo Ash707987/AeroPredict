@@ -1,12 +1,11 @@
 from datetime import datetime
-
 from pydantic import BaseModel
 
 
 class PredictionCreate(BaseModel):
     engine_id: int
     predicted_rul: float
-    confidence_score: float
+    confidence_score: float = 1.
 
 
 class PredictionResponse(BaseModel):

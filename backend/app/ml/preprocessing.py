@@ -1,15 +1,5 @@
 import pandas as pd
 
-COLUMNS = [
-    "unit_number",
-    "time_in_cycles",
-]
-
-COLUMNS += [f"operational_setting_{i}" for i in range(1, 4)]
-
-COLUMNS += [f"sensor_{i}" for i in range(1, 22)]
-
-
 DROP_COLUMNS = [
     "sensor_1",
     "sensor_5",
@@ -22,17 +12,40 @@ DROP_COLUMNS = [
 ]
 
 
-def preprocess(df: pd.DataFrame) -> pd.DataFrame:
-    # NASA files sometimes contain two empty columns
-    df = df.iloc[:, :26]
+def preprocess(df: pd.DataFrame):
 
-    # Assign column names
-    df.columns = COLUMNS
+    required_columns = [
+        "unit_number",
+        "time_in_cycles",
+        "operational_setting_1",
+        "operational_setting_2",
+        "operational_setting_3",
+    ]
 
-    # Remove columns not used during training
-    df = df.drop(columns=DROP_COLUMNS)
+    required_columns += [f"sensor_{i}" for i in range(1, 22)]
 
-    # Remove unit number because the model wasn't trained on it
-    df = df.drop(columns=["unit_number"])
+    missing_columns = [
+        column
+        for column in required_columns
+        if column not in df.columns
+    ]
 
-    return df
+    if missing_columns:
+        raise ValueError(
+            f"Missing columns: {missing_columns}"
+        )
+
+    latest = (
+        df.sort_values("time_in_cycles")
+        .groupby("unit_number")
+        .tail(1)
+        .reset_index(drop=True)
+    )
+
+    engine_ids = latest["unit_number"].tolist()
+
+    features = latest.drop(columns=["unit_number"])
+
+    features = features.drop(columns=DROP_COLUMNS)
+
+    return engine_ids, features
