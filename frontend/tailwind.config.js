@@ -5,13 +5,13 @@ export default {
     extend: {
       colors: {
         app: {
-          bg: "#0b0f17",
-          panel: "#121826",
-          panel2: "#182033",
-          border: "#293245",
-          text: "#e6edf7",
-          muted: "#96a3b7",
-          blue: "#4c8bf5"
+          bg: "rgb(var(--color-bg) / <alpha-value>)",
+          panel: "rgb(var(--color-panel) / <alpha-value>)",
+          panel2: "rgb(var(--color-panel-2) / <alpha-value>)",
+          border: "rgb(var(--color-border) / <alpha-value>)",
+          text: "rgb(var(--color-text) / <alpha-value>)",
+          muted: "rgb(var(--color-muted) / <alpha-value>)",
+          blue: "rgb(var(--color-blue) / <alpha-value>)"
         }
       },
       boxShadow: {
