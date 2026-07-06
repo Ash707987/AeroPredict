@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { Card } from "../components/ui/Card";
 import { useAuth } from "../context/AuthContext";
+import { getApiErrorMessage } from "../lib/apiError";
 import { login } from "../services/authService";
 
 const schema = z.object({
@@ -27,8 +28,8 @@ export function LoginPage() {
       const response = await login(values);
       setSession(response.access_token);
       navigate("/dashboard");
-    } catch {
-      setError("Login failed. Check your email and password.");
+    } catch (error) {
+      setError(getApiErrorMessage(error, "Login failed. Check your email and password."));
     }
   }
 

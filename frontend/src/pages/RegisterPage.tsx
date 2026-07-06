@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { Card } from "../components/ui/Card";
+import { getApiErrorMessage } from "../lib/apiError";
 import { register as registerUser } from "../services/authService";
 
 const schema = z.object({
@@ -25,8 +26,8 @@ export function RegisterPage() {
     try {
       await registerUser(values);
       navigate("/login");
-    } catch {
-      setError("Registration failed. The email may already be used.");
+    } catch (error) {
+      setError(getApiErrorMessage(error, "Registration failed. Please try again."));
     }
   }
 
